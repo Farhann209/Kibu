@@ -40,7 +40,7 @@ export default function CustomNavBar() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-transparent"
+      className="bg-gray-200"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -121,13 +121,7 @@ export default function CustomNavBar() {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem>
-        <Link href={"../bookRooms"}>
-        <Button radius="full" className="text-black border border-white bg-transparent shadow-xl">
-          <b>Book Now</b> 
-        </Button>
-        </Link>
-        </NavbarItem>
+    
       </NavbarContent>
 
       <NavbarMenu>

@@ -4,6 +4,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem,
 import { ImUsers } from "react-icons/im";
 import { GrAddCircle} from "react-icons/gr";
 import { GrSubtractCircle } from "react-icons/gr";
+import Link from "next/link";
 
 export default function ChooseDate() {
   let [numberAdult, setNumberAdult] = useState(0)  //hamile number define garda useState lagayer garne
@@ -32,11 +33,11 @@ export default function ChooseDate() {
             setNumberKids(numberKids - 1)
         }
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex justify-center bg-gray-200 h-20 shadow-xl">
     {/* Container for DateRangePicker and Dropdown */}
-    <div className="flex gap-7 rounded-lg w-[70%] p-4 shadow-lg bg-white">
+    <div className="flex gap-7 w-[70%] pt-3">
       {/* DateRangePicker Section */}
-      <div className="w-[50%] border border-gray-300 rounded-xl shadow-xl">
+      <div className="w-[60%] bg-transparent">
         <DateRangePicker 
           label="Stay duration"
           visibleMonths={2}
@@ -52,10 +53,10 @@ export default function ChooseDate() {
           <DropdownTrigger>
             <Button 
               variant="bordered" 
-              className="w-full h-12 mt-1 flex items-center justify-between bg-white border border-gray-300 rounded-md shadow-md hover:bg-gray-200"
+              className="w-full h-12 mt-1 flex items-center justify-between bg-gray-100 border border-white-300 rounded-md shadow-md hover:bg-gray-200"
             >
               <ImUsers className="text-xl text-gray-700 " /> 
-              <p className="mr-[40%] ">Select rooms and guests</p> 
+              <p className="pr-[35%]">Select rooms and guests</p> 
             </Button>
           </DropdownTrigger>
 
@@ -74,9 +75,9 @@ export default function ChooseDate() {
                     <span className="text-xs text-gray-500 pr-8">Ages 12 or more</span>
                     <br/>
                     <div className="flex justify-col">
-                      <div> <button onClick={incrementAdult} className="mt-2 mr-2 text-xl"><GrAddCircle /></button></div>
+                      <div><button className="mt-2 mr-2 text-xl" onClick={decrementAdult}><GrSubtractCircle /></button></div>
                       <div className="m-1 border border-gray-300 w-8 text-xl pl-2">{numberAdult }</div>
-                      <div><button className="m-2 text-xl" onClick={decrementAdult}><GrSubtractCircle /></button></div>
+                      <div> <button onClick={incrementAdult} className="m-2 text-xl"><GrAddCircle /></button></div>
                     </div>
                     </div>
                   <div>
@@ -85,9 +86,9 @@ export default function ChooseDate() {
                     <span className="text-xs text-gray-500 pl-4">Ages 1 - 11</span>
                     <br/>
                     <div className="flex justify-col">
-                      <div> <button onClick={incrementKids} className="mt-2 mr-2 text-xl"><GrAddCircle /></button></div>
+                      <div><button className="mt-2 mr-2 text-xl" onClick={decrementKids}><GrSubtractCircle /></button></div>
                       <div className="m-1 border border-gray-300 w-8 text-xl pl-2">{numberKids}</div>
-                      <div><button className="m-2 text-xl" onClick={decrementKids}><GrSubtractCircle /></button></div>
+                      <div> <button onClick={incrementKids} className="m-2 text-xl"><GrAddCircle /></button></div>
                     </div>
                   </div>
 
@@ -97,11 +98,6 @@ export default function ChooseDate() {
             </DropdownSection>
           </DropdownMenu>
         </Dropdown>
-      </div>
-      <div>
-        <Button radius="full" className="mt-2 text-gray-700 shadow-lg bg-blue-400 shadow-xl">
-        <b>Book Now</b> 
-      </Button>
       </div>
     </div>
   </div>
