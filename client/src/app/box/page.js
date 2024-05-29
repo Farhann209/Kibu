@@ -9,10 +9,10 @@ const Box = () => {
     const dispatch = useDispatch()
     const generateArea = () => {
       if(borderRadius === '50%'){
-        return ('Area of the circle = ', Math.PI * (width/2) ** 2) 
+        return ( Math.PI * (width/2) ** 2) 
       }
       else if (borderRadius === '0%') {
-        return ('Area of the rectangle = ', height*width)
+        return ( height*width)
       }
     }
   return (

@@ -122,7 +122,7 @@ export default function CustomNavBar() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-        <Link href={"../bookRooms"}>
+        <Link href={"../bookRoomsThamel"}>
         <Button radius="full" className="text-black border border-white bg-transparent shadow-xl">
           <b>Book Now</b> 
         </Button>
