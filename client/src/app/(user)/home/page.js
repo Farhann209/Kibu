@@ -1,6 +1,6 @@
 'use client'
 import React, {useState} from 'react';
-import CustomNavBar from '@/components/navbar/page';
+import CustomNavBar from '@/components/userNavBar/page';
 import Image from 'next/image';
 import ChooseDate from '@/components/datepicker/page';
 
@@ -27,7 +27,7 @@ const page = () => {
         <div>
         <div className="relative w-full h-[100vh]">
         <Image
-          src={require('../../components/backgroundImages/S3 home.jpg')}
+          src={require('../../../../public/S3 home.jpg')}
           alt="Background Image"
           layout="fill"
           objectFit="cover"

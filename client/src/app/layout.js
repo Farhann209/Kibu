@@ -3,7 +3,7 @@ import "./globals.css";
 import {NextUIProvider} from "@nextui-org/react";
 import ReduxProvider from "@/redux/ReduxProvider";
 import { ChakraProvider } from "@chakra-ui/react";
-
+import {Toaster} from 'react-hot-toast';
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,6 +21,10 @@ export default function RootLayout({ children }) {
       <NextUIProvider>
       <ReduxProvider>
       {children}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       </ReduxProvider>
       </NextUIProvider>
       </ChakraProvider>

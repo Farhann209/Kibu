@@ -1,13 +1,11 @@
 'use client'
-import Sidebar from '@/components/sidebar/page'
+import BookForm from '@/components/bookingForm/page'
 import React from 'react'
 
 const page = () => {
-  const value = useSelector(state=>state.counter)
   return (
     <div>
-        <Sidebar/>
-
+        <BookForm/>
     </div>
   )
 }
