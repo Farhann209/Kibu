@@ -41,7 +41,7 @@ export default function Main() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
   };
-  const response = await fetch('http://localhost:8000/register', requestOptions);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}register`, requestOptions);
   const data = await response.json()
   if(response.status == '200'){
     toast.success(data.msg)
@@ -57,7 +57,7 @@ export default function Main() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
   };
-  const response = await fetch('http://localhost:8000/login', requestOptions);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}login`, requestOptions);
   const data = await response.json()
   if(response.status == '200'){
     toast.success(data.msg)

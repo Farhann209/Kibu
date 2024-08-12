@@ -7,17 +7,6 @@ import {
 } from "@nextui-org/react";
 import { ChevronDown } from "./navIcons.jsx";
 
-export const AcmeLogo = () => (
-  <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-    <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </svg>
-);
-
 export default function CustomNavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -47,15 +36,14 @@ export default function CustomNavBar() {
       </NavbarContent>
 
       <NavbarBrand className="text-black">
-        <Link href="../home">
-        <AcmeLogo />
+        <Link href="../">
         <p className="font-bold text-black">KIBU</p>
         </Link>
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-6 justify-center">
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href={"../"}>
             Overview
           </Link>
         </NavbarItem>
@@ -84,31 +72,24 @@ export default function CustomNavBar() {
               key="Nayabazar"
               description="Nayabazar is a residential are just 10 minutes walk away from Thamel"
             >
-              <b>Nayabazar</b>
+              <Link color="foreground" href={'../listing'}>
+                <b>Nayabazar</b>
+              </Link>
             </DropdownItem>
+
             <DropdownItem
               key="Boudha"
-              description="located 5 minutes away from the heart of Kathmandu's buddhism and the famous Boudha stupa"
+              description="Located 5 minutes away from the heart of Kathmandu's Buddhism and the famous Boudha Stupa"
             >
-              <b>Boudha</b>
+              <Link color="foreground" href={'../listing/bookRoomsBoudha'}>
+                <b>Boudha</b>
+              </Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
 
         <NavbarItem>
-          <Link href="#" color="foreground">
-            Facilities
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Reviews
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href={"../benefits"}>
             Direct Benefits
           </Link>
         </NavbarItem>
@@ -118,11 +99,18 @@ export default function CustomNavBar() {
             Contact
           </Link>
         </NavbarItem>
+
+        <NavbarItem>
+          <Link color="foreground" href={"../yourBooking"}>
+            Your Booking
+          </Link>
+        </NavbarItem>
+
       </NavbarContent>
 
       <NavbarContent justify="end">
         <NavbarItem>
-        <Link href={"../bookRoomsThamel"}>
+        <Link href={"../listing"}>
         <Button radius="full" className="text-black border border-white bg-transparent shadow-xl">
           <b>Book Now</b> 
         </Button>

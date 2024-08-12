@@ -1,141 +1,92 @@
-'use client'
-import React from "react";
-import {Listbox, ListboxItem} from "@nextui-org/react";
-import { GenIcon } from "react-icons";
-import {cn} from "@nextui-org/react";
+'use client'  // This indicates the component is a client-side component for Next.js.
 
-export const IconWrapper = ({children, className}) => (
+import React from "react";  // Import React to use JSX.
+import { Listbox, ListboxItem } from "@nextui-org/react";  // Import Listbox and ListboxItem components from @nextui-org/react.
+import { IoBedOutline } from "react-icons/io5";
+import { SlCalender } from "react-icons/sl";
+import { PiUsersThree } from "react-icons/pi";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { cn } from "@nextui-org/react";  // Import the cn utility for combining class names from @nextui-org/react.
+import { useRouter } from "next/navigation";
+
+// A functional component that wraps children elements with specific styles.
+export const IconWrapper = ({ children, className }) => (
     <div className={cn(className, "flex items-center rounded-small justify-center w-7 h-7")}>
       {children}
     </div>
-  );
+);
 
-  export const ItemCounter = ({number}) => (
+// A functional component that displays a counter number and an icon.
+export const ItemCounter = ({ number }) => (
     <div className="flex items-center gap-1 text-default-400">
       <span className="text-small">{number}</span>
-      <GenIcon/>
     </div>
-  );
+);
 
-export default function Sidebar() {
+
+export default function Sidebar() {  // The main Sidebar component.
+  const router = useRouter();
+
+  const handleNavigation = (href) => {
+    router.push(href);
+  };
   return (
     <Listbox
-      aria-label="User Menu"
-      onAction={(key) => alert(key)}
-      className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small rounded-medium"
+      aria-label="User Menu"  // ARIA label for accessibility.
+      className="m-2 mt-4 mr-6 p-2 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small rounded-medium"  // Styling for the Listbox.
       itemClasses={{
         base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
-      }}
+      }}  // Classes applied to each ListboxItem.
     >
+      {/* ListboxItem for "Issues" */}   
       <ListboxItem
-        key="issues"
-        endContent={<ItemCounter number={13} />}
+        onClick={()=> handleNavigation('/adminDashboard') }
+        key="dashboard"  // Unique key for the item.
         startContent={
-          <IconWrapper className="bg-success/10 text-success">
-            <GenIcon/>
+          <IconWrapper className="bg-success/10"> 
+            <MdOutlineSpaceDashboard />
           </IconWrapper>
         }
       >
-        Issues
+       Dashboard
       </ListboxItem>
+
       <ListboxItem
-        key="pull_requests"
-        endContent={<ItemCounter number={6} />}
+        onClick={()=> handleNavigation('/bookings') }
+        key="bookings"  // Unique key for the item.
+        endContent={<ItemCounter number={''} />}  // End content displaying the counter.
         startContent={
-          <IconWrapper className="bg-primary/10 text-primary">
-            <GenIcon/>
+          <IconWrapper className="bg-success/10"> 
+            <PiUsersThree />
           </IconWrapper>
         }
       >
-        Pull Requests
+       Bookings
       </ListboxItem>
+     
       <ListboxItem
-        key="discussions"
-        endContent={<ItemCounter number={293} />}
+        onClick={()=> handleNavigation('/listings') }
+        key="listing"  // Unique key for the item.
+        endContent={<ItemCounter number={17} />}  // End content displaying the counter.
         startContent={
-          <IconWrapper className="bg-secondary/10 text-secondary">
-            <GenIcon/>
+          <IconWrapper className="bg-success/10"> 
+            <IoBedOutline />
           </IconWrapper>
         }
       >
-        Discussions
+       Listing
       </ListboxItem>
+
       <ListboxItem
-        key="actions"
-        endContent={<ItemCounter number={2} />}
+        onClick={()=> handleNavigation('/calender') }
+        key="calender"
         startContent={
-          <IconWrapper className="bg-warning/10 text-warning">
-            <GenIcon/>
+          <IconWrapper className="bg-success/10"> 
+            <SlCalender />
           </IconWrapper>
         }
       >
-        Actions
-      </ListboxItem>
-      <ListboxItem
-        key="projects"
-        endContent={<ItemCounter number={4} />}
-        startContent={
-          <IconWrapper className="bg-default/50 text-foreground">
-            <GenIcon/>
-          </IconWrapper>
-        }
-      >
-        Projects
-      </ListboxItem>
-      <ListboxItem
-        key="releases"
-        className="group h-auto py-3"
-        endContent={<ItemCounter number={399} />}
-        startContent={
-          <IconWrapper className="bg-primary/10 text-primary">
-            <GenIcon/>
-          </IconWrapper>
-        }
-        textValue="Releases"
-      >
-        <div className="flex flex-col gap-1">
-          <span>Releases</span>
-          <div className="px-2 py-1 rounded-small bg-default-100 group-data-[hover=true]:bg-default-200">
-            <span className="text-tiny text-default-600">@nextui-org/react@2.0.10</span>
-            <div className="flex gap-2 text-tiny">
-              <span className="text-default-500">49 minutes ago</span>
-              <span className="text-success">Latest</span>
-            </div>
-          </div>
-        </div>
-      </ListboxItem>
-      <ListboxItem
-        key="contributors"
-        endContent={<ItemCounter number={79} />}
-        startContent={
-          <IconWrapper className="bg-warning/10 text-warning">
-            <GenIcon/>
-          </IconWrapper>
-        }
-      >
-        Contributors
-      </ListboxItem>
-      <ListboxItem
-        key="watchers"
-        endContent={<ItemCounter number={82} />}
-        startContent={
-          <IconWrapper className="bg-default/50 text-foreground">
-            <GenIcon/>
-          </IconWrapper>
-        }
-      >
-        Watchers
-      </ListboxItem>
-      <ListboxItem
-        key="license"
-        endContent={<span className="text-small text-default-400">MIT</span>}
-        startContent={
-          <IconWrapper className="bg-danger/10 text-danger dark:text-danger-500">
-            <GenIcon/>
-          </IconWrapper>
-        }
-      >
-        License
+       Calender
       </ListboxItem>
     </Listbox>
   );
