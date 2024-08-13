@@ -125,7 +125,9 @@ Below is an example of how you can instruct your audience on installing and sett
 
 3. Run the project
 
+    ```bash
     npm run dev
+    ```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
