@@ -1,42 +1,49 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Card, CardBody, Image, Button } from "@nextui-org/react";
-import { RangeCalendar } from "@nextui-org/react";
-import { today, getLocalTimeZone, parseDate } from '@internationalized/date';
+import React, { useEffect, useState } from 'react'; // Importing React hooks
+import axios from 'axios'; // Importing axios for making HTTP requests
+import { Card, CardBody, Image, Button } from "@nextui-org/react"; // Importing UI components from NextUI
+import { RangeCalendar } from "@nextui-org/react"; // Importing RangeCalendar component from NextUI
+import { today, getLocalTimeZone, parseDate } from '@internationalized/date'; // Importing date utilities from internationalized date package
 
 const AdminCalendarPage = () => {
+  // State to store the list of listings, selected dates for each listing, and closed dates
   const [listingList, setListingList] = useState([]);
   const [selectedDates, setSelectedDates] = useState({});
   const [closedDates, setClosedDates] = useState({});
 
+  // Fetch listings when the component mounts
   useEffect(() => {
     fetchListing();
   }, []);
 
+  // Function to fetch listing details from the server
   const fetchListing = async () => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}listing`);
-      setListingList(response.data);
+      setListingList(response.data); // Updating the listingList state with the fetched data
 
       // Initialize closedDates state from the database
       const initialClosedDates = {};
       response.data.forEach(listing => {
-        initialClosedDates[listing._id] = new Set(listing.listingBookedDates.map(date => new Date(date).toDateString()));
+        initialClosedDates[listing._id] = new Set(
+          listing.listingBookedDates.map(date => new Date(date).toDateString())
+        );
       });
-      setClosedDates(initialClosedDates);
+      setClosedDates(initialClosedDates); // Set the closed dates for each listing
     } catch (error) {
-      console.error("Failed to fetch listings:", error);
+      console.error("Failed to fetch listings:", error); // Log any error that occurs during the fetch
     }
   };
 
+  // Function to handle date range changes for a specific listing
   const handleDateRangeChange = (listingId, range) => {
     setSelectedDates((prev) => ({
       ...prev,
-      [listingId]: range,
+      [listingId]: range, // Update the selected date range for the specific listing
     }));
   };
 
+  // Function to update booking dates (either close or open dates)
   const updateBookingDates = async (listing, action) => {
     const selectedRange = selectedDates[listing._id];
     if (!selectedRange || !selectedRange.start || !selectedRange.end) {
@@ -49,11 +56,13 @@ const AdminCalendarPage = () => {
     const endDate = new Date(end);
     const datesToUpdate = [];
 
+    // Collect all dates within the selected range
     while (currentDate <= endDate) {
       datesToUpdate.push(currentDate.toDateString());
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
+    // Update the closedDates state based on the action (close or open dates)
     const updatedClosedDates = new Set(closedDates[listing._id] || []);
     if (action === 'close') {
       datesToUpdate.forEach(date => updatedClosedDates.add(date));
@@ -62,21 +71,23 @@ const AdminCalendarPage = () => {
     }
     setClosedDates((prev) => ({
       ...prev,
-      [listing._id]: updatedClosedDates,
+      [listing._id]: updatedClosedDates, // Update the closed dates for the specific listing
     }));
 
     try {
       const updatedDates = Array.from(updatedClosedDates);
 
+      // Update the listing in the backend with the new closed dates
       await axios.put(`${process.env.NEXT_PUBLIC_API_URL}listing/${listing._id}`, {
         listingBookedDates: updatedDates
       });
       fetchListing(); // Refresh listings to update calendars
     } catch (error) {
-      console.error(`Failed to ${action} dates:`, error);
+      console.error(`Failed to ${action} dates:`, error); // Log any error that occurs during the update
     }
   };
 
+  // Function to check if a date is unavailable for booking
   const isDateUnavailable = (listingId, date) => {
     const parsedDate = parseDate(date.toString());
 

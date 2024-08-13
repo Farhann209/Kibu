@@ -8,8 +8,10 @@ import {
 import { ChevronDown } from "./navIcons.jsx";
 
 export default function CustomNavBar() {
+  // State to manage whether the menu is open or closed
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  // Array of menu items for the navigation bar
   const menuItems = [
     "Overview",
     "Accomodations",
@@ -20,55 +22,62 @@ export default function CustomNavBar() {
     "Book Now",
   ];
 
+  // Icon to be used in dropdowns
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
   }
 
   return (
     <Navbar
-      isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-      className="bg-transparent"
+      isBordered // Adds a border to the Navbar
+      isMenuOpen={isMenuOpen} // Controls the state of the menu
+      onMenuOpenChange={setIsMenuOpen} // Toggles the menu state
+      className="bg-transparent" // Sets background as transparent
     >
+      {/* Toggle button for small screens */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
+      {/* Navbar brand (Logo and Name) */}
       <NavbarBrand className="text-black">
         <Link href="../">
-        <Image 
-            src="/logo.jpg" 
+          <Image 
+            src="/logo.jpg"  // Path to the logo image
             alt="KIBU Logo" 
             width={36} 
             height={36} 
-            className="mr-2"
+            className="mr-2" // Adds margin to the right
           />
-        <p className="font-bold text-black">KIBU</p>
+          <p className="font-bold text-black">KIBU</p>  {/* Text beside the logo */}
         </Link>
       </NavbarBrand>
 
+      {/* Navbar items for larger screens */}
       <NavbarContent className="hidden sm:flex gap-6 justify-center">
+        {/* Link to the Overview page */}
         <NavbarItem>
           <Link color="foreground" href={"../"}>
             Overview
           </Link>
         </NavbarItem>
 
+        {/* Dropdown for Accommodations */}
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
               <Button
-                disableRipple
+                disableRipple // Disables the ripple effect
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent"
                 radius="sm"
-                endContent={icons.chevron}
+                endContent={icons.chevron} // Adds the chevron icon
                 variant="light"
               >
                 <p className="text-base">Accomodations</p>
               </Button>
             </DropdownTrigger>
           </NavbarItem>
+          {/* Dropdown menu with two options */}
           <DropdownMenu
             className="w-[340px]"
             itemClasses={{
@@ -95,15 +104,10 @@ export default function CustomNavBar() {
           </DropdownMenu>
         </Dropdown>
 
+        {/* Other navigation items */}
         <NavbarItem>
           <Link color="foreground" href={"../benefits"}>
             Direct Benefits
-          </Link>
-        </NavbarItem>
-
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Contact
           </Link>
         </NavbarItem>
 
@@ -114,7 +118,7 @@ export default function CustomNavBar() {
         </NavbarItem>
       </NavbarContent>
 
-
+      {/* Mobile view menu */}
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
