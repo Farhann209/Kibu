@@ -31,7 +31,7 @@
 <br />
 <div align="center">
    <a>
-    <img src="public/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="client/public/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">KIBU</h3>
