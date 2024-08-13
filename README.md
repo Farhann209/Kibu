@@ -23,16 +23,20 @@
       </ul>
     </li>
     <li>
+      <a href="#features">Features</a>
+      <ul>
+        <li><a href="#admin-side">Admin Side</a></li>
+        <li><a href="#user-side">User Side</a></li>
+      </ul>
+    </li>
+    <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -98,7 +102,6 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 ## Installation
-<u>
 
 Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn’t rely on any external dependencies or services.
 
@@ -109,12 +112,14 @@ Below is an example of how you can instruct your audience on installing and sett
 
 2. Install NPM packages on both server and client
 
-    cd client/
+     ```bash
+    cd server/
     npm install
     # wait for packages to install
-    cd ../
-     cd server/
+    cd ..
+    cd client/
     npm install
+    ```
 
 3. Run the project
 
@@ -139,17 +144,6 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 <u>
