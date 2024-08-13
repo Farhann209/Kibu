@@ -38,18 +38,6 @@ export default function Sidebar() {  // The main Sidebar component.
         base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
       }}  // Classes applied to each ListboxItem.
     >
-      {/* ListboxItem for "Issues" */}   
-      <ListboxItem
-        onClick={()=> handleNavigation('/adminDashboard') }
-        key="dashboard"  // Unique key for the item.
-        startContent={
-          <IconWrapper className="bg-success/10"> 
-            <MdOutlineSpaceDashboard />
-          </IconWrapper>
-        }
-      >
-       Dashboard
-      </ListboxItem>
 
       <ListboxItem
         onClick={()=> handleNavigation('/bookings') }

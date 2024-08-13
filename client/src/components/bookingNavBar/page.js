@@ -3,10 +3,9 @@ import React from "react";
 import {
   Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle,
   NavbarMenuItem, NavbarMenu, Link, Button, DropdownItem,
-  DropdownTrigger, Dropdown, DropdownMenu
+  DropdownTrigger, Dropdown, DropdownMenu, Image
 } from "@nextui-org/react";
 import { ChevronDown } from "./navIcons.jsx";
-
 
 export default function CustomNavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -38,6 +37,13 @@ export default function CustomNavBar() {
 
       <NavbarBrand className="text-black">
         <Link href="../">
+        <Image 
+            src="/logo.jpg" 
+            alt="KIBU Logo" 
+            width={36} 
+            height={36} 
+            className="mr-2"
+          />
         <p className="font-bold text-black">KIBU</p>
         </Link>
       </NavbarBrand>
