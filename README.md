@@ -116,6 +116,8 @@ Below is an example of how you can instruct your audience on installing and sett
     cd server/
     npm install
     # wait for packages to install
+    ```
+    ```bash
     cd ..
     cd client/
     npm install
