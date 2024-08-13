@@ -66,20 +66,21 @@ Our platform allows users to easily browse, select, and book their ideal accommo
 <u>
 
 ### Admin Side
-[*]**Admin Login**: Only admins can log in through the secure login section.
-[*] **No Account Creation**: Admin accounts are directly created and managed through MongoDB, eliminating the need for an account creation section.
-[*] **Add New Listing**: Admins can easily add new listings for rooms or apartments.
-[*] **View Bookings**: Admins can view all bookings received in real-time.
-[*] **Delete Bookings**: Admins have the ability to delete bookings directly from the admin dashboard.
-[*] **Calendar Management**: View and manage calendars for each listing with the ability to open or close booking dates.
+### Admin Side
+- [x] **Admin Login:** Only admins can log in through the secure login section.
+- [x] **No Account Creation:** Admin accounts are directly created and managed through MongoDB, eliminating the need for an account creation section.
+- [x] **Add New Listing:** Admins can easily add new listings for rooms or apartments.
+- [x] **View Bookings:** Admins can view all bookings received in real-time.
+- [x] **Delete Bookings:** Admins have the ability to delete bookings directly from the admin dashboard.
+- [x] **Calendar Management:** View and manage calendars for each listing with the ability to open or close booking dates.
 
 ### User Side
-[*] **Browse Listings**: Users can view available listings on the main page, each with a detailed description and images.
-[*] **Listing Specific Page**: Each listing has its own page where users can see more details, select dates from a calendar, and fill out a booking form.
-[*] **Booking Process**: After selecting dates and submitting the form, users can book a listing and are directed to a thank you page.
-[*] **Booking Confirmation**: The thank you page allows users to view their booking details.
-[*] **Your Booking**: Users can later search for their booking using the name provided during the booking process, with an option to cancel their booking.
-[*] **Admin Login Section**: The main page includes a small, dedicated section for admin login.
+- [x] **Browse Listings:** Users can view available listings on the main page, each with a detailed description and images.
+- [x] **Listing Specific Page:** Each listing has its own page where users can see more details, select dates from a calendar, and fill out a booking form.
+- [x] **Booking Process:** After selecting dates and submitting the form, users can book a listing and are directed to a thank you page.
+- [x] **Booking Confirmation:** The thank you page allows users to view their booking details.
+- [x] **Your Booking:** Users can later search for their booking using the name provided during the booking process, with an option to cancel their booking.
+- [x] **Admin Login Section:** The main page includes a small, dedicated section for admin login.
 
 
 <!-- GETTING STARTED -->
